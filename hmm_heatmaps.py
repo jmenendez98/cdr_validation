@@ -126,7 +126,7 @@ def main():
     plt.yticks([0.5, 1.5, 2.5], ['C', 'B', 'A'])
 
     # Display the plot 
-    transitionMatrixHeatmap = outputPrefix + 'transitionMatrixHeatmap.png'
+    transitionMatrixHeatmap = outputPrefix + '.transitionMatrixHeatmap.png'
     plt.savefig(transitionMatrixHeatmap)
     plt.clf()
 
