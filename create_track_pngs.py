@@ -48,12 +48,24 @@ def parse_regions_file(regions_file):
 def main():
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description='Generate IGV-like visualization of 5mC probabilities and satellite array regions.')
-    parser.add_argument('-p', '--mod_prob', help='Path to the 5mC probabilities bed file')
-    parser.add_argument('-s', '--strict', help='Path to the Strict CDR bed file')
-    parser.add_argument('-t', '--transitions', help='Path to the Strict Transition bed file')
-    parser.add_argument('-v', '--viterbi', help='Path to the Viterbi HMM bed file')
-    parser.add_argument('-r', '--regions_file', help='Path to the satellite array regions bed file')
-    parser.add_argument('-o', '--output_file', help='Output file path')
+    parser.add_argument('-p', '--mod_prob', 
+                        required=True,
+                        help='Path to the 5mC probabilities bed file')
+    parser.add_argument('-s', '--strict',
+                        required=True, 
+                        help='Path to the Strict CDR bed file')
+    parser.add_argument('-t', '--transitions', 
+                        required=True,
+                        help='Path to the Strict Transition bed file')
+    parser.add_argument('-v', '--viterbi', 
+                        required=True,
+                        help='Path to the Viterbi HMM bed file')
+    parser.add_argument('-r', '--regions_file', 
+                        required=True,
+                        help='Path to the satellite array regions bed file')
+    parser.add_argument('-o', '--output_file', 
+                        required=True,
+                        help='Output file path')
     args = parser.parse_args()
 
     # Parse Each File
