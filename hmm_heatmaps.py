@@ -79,7 +79,7 @@ def main():
     cbar.ax.set_yticklabels(['0', '0.25', '0.5', '0.75', '1'])
 
     # Set plot title and axis labels 
-    emissionMatrixTitle = outputPrefix + " Emission Matrix"
+    emissionMatrixTitle = "Emission Matrix"
     plt.title(emissionMatrixTitle) 
     plt.xlabel("Hidden State") 
     plt.ylabel("Emission")
@@ -90,7 +90,7 @@ def main():
     plt.yticks([0.5, 1.5, 2.5, 3.5], ['w', 'x', 'y', 'z'])
 
     # Display the plot
-    emissionMatrixHeatmap = outputPrefix + 'emissionMatrixHeatmap.png'
+    emissionMatrixHeatmap = outputPrefix + '.emissionMatrixHeatmap.png'
     plt.savefig(emissionMatrixHeatmap)
     plt.clf()
 
@@ -115,7 +115,7 @@ def main():
     cbar.ax.set_yticklabels(['0', '0.25', '0.5', '0.75', '1'])
 
     # Set plot title and axis labels 
-    transitionMatrixTitle = outputPrefix + "Transition Matrix"
+    transitionMatrixTitle = "Transition Matrix"
     plt.title(transitionMatrixTitle) 
     plt.xlabel("From Hidden State") 
     plt.ylabel("To Hidden State")
