@@ -167,8 +167,8 @@ def main():
 
     # Show plot
     plt.tight_layout()
-    plt.savefig(args.output_file)  # Save plot as PNG image
-    plt.show(dpi=2400)
+    plt.savefig(args.output_file, dpi=2400)  # Save plot as PNG image
+    plt.show()
 
 if __name__ == "__main__":
     main()
