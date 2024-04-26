@@ -82,18 +82,16 @@ def main():
     # Define colors for each region
     region_colors = {'Not within region': 'lightsteelblue', 
                      'CDR': 'maroon', 
-                     'CDR_Intermediate': 'orange', 
-                     'small_CDR': 'orangered', 
-                     'small_CDR_Intermediate': 'wheat'}
+                     'CDR_Transition': 'wheat', 
+                     'small_CDR': 'orangered'}
 
     #print("Bin Counts:", bin_counts)
     #print("Bin Proportions:", bin_proportions)
 
     # Define region order
     region_order = ['CDR', 
+                    'CDR_Transition',
                     'small_CDR', 
-                    'CDR_Intermediate', 
-                    'small_CDR_Intermediate', 
                     'Not within region']
 
     # Convert bin counts and proportions to numpy arrays
