@@ -137,7 +137,7 @@ def main():
     #half_xwidth = (abs(xmax - xmin)/2)*1.05
     #ax.set_xlim(middle-half_xwidth, middle+half_xwidth)
     ax.set_xlim(xmin, xmax)
-    print("H1L Limits: ", xmin, xmax)
+    # print("H1L Limits: ", xmin, xmax)
 
     # Set x-axis tick locations and labels
     interval_size = (xmax - xmin) // 10
