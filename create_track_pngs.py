@@ -104,8 +104,7 @@ def main():
     # Plot the CDRs from the Viterbi HMM CDR Predictions
     cdr_color = {"CDR": "maroon",
                  "small_CDR": "darksalmon",
-                 "CDR_Intermediate": "lightsalmon",
-                 "small_CDR_Intermediate": "bisque"}
+                 "CDR_Transition": "lightsalmon"}
     for chrom, start, end, cdr_type in viterbi_data:
         if chrom == chromosome:
             ax.plot([start, end], 

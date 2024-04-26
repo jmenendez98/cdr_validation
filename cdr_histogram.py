@@ -22,7 +22,7 @@ def calculate_bins(mod_prob_df, regions_df, hist_edges):
     bin_counts = []
     bin_proportions = []
 
-    region_types = ['Not within region', 'CDR', 'CDR_Intermediate', 'small_CDR', 'small_CDR_Intermediate']
+    region_types = ['Not within region', 'CDR', 'CDR_Transition', 'small_CDR']
 
     # Iterate over histogram bins
     for i in range(len(hist_edges) - 1):
@@ -106,9 +106,8 @@ def main():
 
     index = {'Not within region': 0, 
              'CDR': 1, 
-             'CDR_Intermediate': 2, 
-             'small_CDR': 3, 
-             'small_CDR_Intermediate': 4}
+             'CDR_Transition': 2, 
+             'small_CDR': 3}
 
     # Iterate over each region type
     for region_type in region_order:
@@ -154,10 +153,8 @@ def main():
     ax.legend()
 
     # Save plot as an image
-    plt.savefig(args.output)
+    plt.savefig(args.output, dpi=5200)
 
-    # Show plot
-    plt.show()
 
 if __name__ == "__main__":
     main()
