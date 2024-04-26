@@ -61,8 +61,8 @@ def main():
     ### make the emission matrix heatmap ###
     ########################################
     print( emissionMatrix )
-    print( emissionMatrix.values )
-    print( emissionMatrix.shape )
+    #print( emissionMatrix.values )
+    #print( emissionMatrix.shape )
 
     # Plot the heatmap with custom colors and annotations
     plt.imshow(emissionMatrix.values, cmap="Reds", vmin=0,
@@ -98,7 +98,7 @@ def main():
     ### make the transition matrix heatmap ###
     ##########################################
     print( transitionMatrix )
-    print( transitionMatrix.values )
+    #print( transitionMatrix.values )
 
     # Plot the heatmap with custom colors and annotations
     plt.imshow(transitionMatrix.values, cmap="Reds", vmin=0,
