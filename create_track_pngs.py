@@ -19,8 +19,10 @@ def parse_strict_file(bed_file):
     data = []
     with open(bed_file, 'r') as f:
         for line in f:
-            chrom, start, end = line.strip().split('\t')
-            data.append((chrom, int(start), int(end)))
+            fields = line.strip().split('\t')
+            if len(fields) >= 4:
+                chrom, start, end, strict_type = fields[:4]
+                data.append((chrom, int(start), int(end), strict_type))
     return data
 
 # Function to parse bed file
@@ -52,7 +54,6 @@ def main():
     parser = argparse.ArgumentParser(description='Generate IGV-like visualization of 5mC probabilities and satellite array regions.')
     parser.add_argument('-p', '--mod_prob', help='Path to the 5mC probabilities bed file')
     parser.add_argument('-s', '--strict', help='Path to the Strict CDR bed file')
-    parser.add_argument('-t', '--transitions', help='Path to the Strict Transition bed file')
     parser.add_argument('-v', '--viterbi', help='Path to the Viterbi HMM bed file')
     parser.add_argument('-r', '--regions_file', help='Path to the satellite array regions bed file')
     parser.add_argument('-o', '--output_file', help='Output file path')
@@ -61,7 +62,6 @@ def main():
     # Parse Each File
     pileup_data = parse_pileup_file(args.mod_prob)
     strict_data = parse_strict_file(args.strict)
-    transition_data = parse_strict_file(args.transitions)
     viterbi_data = parse_viterbi_file(args.viterbi)
     regions_data = parse_regions_file(args.regions_file)
 
@@ -86,20 +86,15 @@ def main():
         chromosome = chrom
 
     # Plot the strictCDRs from the bed file of strict CDR Predictions
-    for chrom, start, end in strict_data:
+    strict_color = {"strict_CDR": "orange",
+                    "strict_Transition": "navajowhite"}
+    for chrom, start, end, strict_type in strict_data:
         if chrom == chromosome:
             ax.plot([start, end], 
                     [panel_step, panel_step], 
-                    color='rebeccapurple', 
+                    color=strict_color[strict_type], 
                     linewidth=2)          
-             
-    # Plot the transitions from the bed file of strict CDR Predictions
-    for chrom, start, end in transition_data:
-        if chrom == chromosome:
-            ax.plot([start, end], 
-                    [panel_step, panel_step], 
-                    color='blueviolet', 
-                    linewidth=2)  
+
 
     # Plot the CDRs from the Viterbi HMM CDR Predictions
     cdr_color = {"CDR": "maroon",
@@ -126,6 +121,9 @@ def main():
                     xmin = start
                 if end > xmax:
                     xmax = end
+
+    print(chromosome)
+    print(xmin, xmax)
 
     #########################
     ### SET PLOT SETTINGS ###
